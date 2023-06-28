@@ -28,7 +28,7 @@ router.put('/edit/dispositivo/:id', (req, res) => {
 });
 
 //Funcion para obtener un dispositivo con su id
-router.put('/dispositivo/:id', (req, res) => {
+router.get('/dispositivo/:id', (req, res) => {
     console.log("ruta")
     controller.getDispositivoById(req, res);
 });
