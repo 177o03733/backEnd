@@ -21,15 +21,19 @@ router.delete('/dispositivos/:id', (req, res) => {
 });
 
 
-//subir imagen indicando el id del dispositivo y pasando una imagen 
-router.put('/upload/dispositivo/:nombre', (req, res) => {
-    controller.putdispositivo(req, res);
-});
-
+//Funcion para editar dispositivo
 router.put('/edit/dispositivo/:id', (req, res) => {
     console.log("ruta")
     controller.editDispositivos(req, res);
 });
+
+//Funcion para obtener un dispositivo con su id
+router.put('/dispositivo/:id', (req, res) => {
+    console.log("ruta")
+    controller.getDispositivoById(req, res);
+});
+
+
 
 
 
