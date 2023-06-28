@@ -55,6 +55,34 @@ controller.getDispositivos = async (req, res) => {
   }
 };
 
+
+controller.getDispositivoById = async (req, res) => {
+  try {
+    const dispositivoId = req.params.id; // Obtén el ID del dispositivo desde los parámetros de la solicitud
+
+    const snapshot = await db.collection('Dispositivos').doc(dispositivoId).get();
+    if (!snapshot.exists) {
+      // Si no existe un dispositivo con el ID proporcionado, devuelve un mensaje de error
+      return res.status(404).send('Dispositivo no encontrado');
+    }
+
+    const dispositivo = {
+      id: snapshot.id,
+      ...snapshot.data()
+    };
+
+    res.send(dispositivo);
+    console.log(dispositivo);
+  } catch (error) {
+    console.log('Error obteniendo el dispositivo:', error);
+    res.status(500).send('Error obteniendo el dispositivo');
+  }
+};
+
+
+
+
+
 //Add Dispositivo.
 controller.addDispositivo = async (req, res) => {
     const data = req.body;
